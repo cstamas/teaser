@@ -23,11 +23,12 @@ So, if you write a HttpClient, or anything that does some HTTP transport, and yo
 
 
 TODO:
-- add all resources/cases from "Chester the test-data molester"
-- add resources/cases from AHC UTs
-- seek other "problems" and implement them
-- make it better ;)
-- finish it ;)
+
+* add all resources/cases from "Chester the test-data molester"
+* add resources/cases from AHC UTs
+* seek other "problems" and implement them
+* make it better ;)
+* finish it ;)
 
 
 Have fun,  
