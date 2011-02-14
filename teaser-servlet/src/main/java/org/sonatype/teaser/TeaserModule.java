@@ -14,11 +14,11 @@ public class TeaserModule
     @Override
     protected void configureServlets()
     {
-        serve( "/echo/*" ).with( EchoServlet.class, new MapBuilder().put( "prefix", "/echo" ).build() );
-        serve( "/status/*" ).with( StatusServlet.class, new MapBuilder().put( "prefix", "/status" ).build() );
-        serve( "/never/*" ).with( NeverServlet.class, new MapBuilder().put( "prefix", "/never" ).build() );
-        serve( "/redirect/*" ).with( RedirectServlet.class, new MapBuilder().put( "prefix", "/redirect" ).build() );
-        serve( "/timeout/*" ).with( TimeoutServlet.class, new MapBuilder().put( "prefix", "/timeout" ).build() );
+        serve( "/echo/*" ).with( EchoServlet.class );
+        serve( "/status/*" ).with( StatusServlet.class );
+        serve( "/never/*" ).with( NeverServlet.class );
+        serve( "/redirect/*" ).with( RedirectServlet.class );
+        serve( "/timeout/*" ).with( TimeoutServlet.class );
 
         // TODO: take this from Maven packaged JAR
         filter( "/*" ).through( new VersioningFilter( "teaser-servlet", "1.0.0-SNAPSHOT" ) );
