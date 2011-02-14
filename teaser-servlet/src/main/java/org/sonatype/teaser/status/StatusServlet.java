@@ -15,6 +15,7 @@ import org.sonatype.teaser.AbstractTeaserServlet;
 public class StatusServlet
     extends AbstractTeaserServlet
 {
+    @Override
     protected void service( HttpServletRequest req, HttpServletResponse resp )
         throws ServletException, IOException
     {
