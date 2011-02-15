@@ -18,22 +18,18 @@ public class RedirectServlet
     protected void service( HttpServletRequest req, HttpServletResponse resp )
         throws ServletException, IOException
     {
-        final int redirectCount = asInt( getFirstPathElementFromRequest( req ), -1 );
+        // the default value of 30 should freak out any sane client
+        final int redirectCount = asInt( getFirstPathElementFromRequest( req ), 30 );
 
         if ( redirectCount > 0 )
         {
             // dec the count and bounce
-            resp.sendRedirect( req.getContextPath() + req.getServletPath() + "/" + ( redirectCount - 1 ) + "/" );
+            resp.sendRedirect( req.getContextPath() + req.getServletPath() + "/" + ( redirectCount - 1 ) );
         }
         else if ( redirectCount == 0 )
         {
             // send it somewhere
-            resp.sendRedirect( req.getContextPath() + "/status/200" );
-        }
-        else
-        {
-            resp.setContentType( "text/plain" );
-            resp.sendError( 400, "Um, redirect count is not found in URI " + req.getRequestURI() );
+            resp.sendRedirect( req.getContextPath() + "/echo?from=redirect" );
         }
     }
 }

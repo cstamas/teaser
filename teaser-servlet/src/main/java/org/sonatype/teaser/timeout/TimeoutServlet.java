@@ -18,10 +18,16 @@ public class TimeoutServlet
     protected void service( HttpServletRequest req, HttpServletResponse resp )
         throws ServletException, IOException
     {
+        // the default value of 600 seconds (10 minutes) should freak out any client
+        final int seconds = asInt( getFirstPathElementFromRequest( req ), 600 );
+
         try
         {
-            // This will not work on GAE!
-            Thread.sleep( 10 * 60 * 1000 );
+            // GAE can "kill" us if seconds are more than 30, since it expects that processing ends in 30sec.
+            Thread.sleep( seconds * 1000 );
+
+            // send it somewhere
+            resp.sendRedirect( req.getContextPath() + "/echo?from=timeout" );
         }
         catch ( InterruptedException e )
         {
