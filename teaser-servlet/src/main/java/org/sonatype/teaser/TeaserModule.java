@@ -1,5 +1,6 @@
 package org.sonatype.teaser;
 
+import org.sonatype.teaser.content.ContentServlet;
 import org.sonatype.teaser.echo.EchoServlet;
 import org.sonatype.teaser.never.NeverServlet;
 import org.sonatype.teaser.redirect.RedirectServlet;
@@ -31,8 +32,8 @@ public class TeaserModule
         serve( "/never" ).with( NeverServlet.class );
 
         // content delivery
-        
-        serve( "/content/*" ).with( NeverServlet.class );
+
+        serve( "/content/*" ).with( ContentServlet.class );
 
         // "static" resources:
         // text.txt -- a static text doco
@@ -43,31 +44,31 @@ public class TeaserModule
         // image.gif -- a static GIF picture
         // image.svg -- a static SVG picture
         // archive.zip -- a static ZIP file
-        
+
         // "generated" resources:
-        // random.ext -- a random sized random content byte-stream
-        
+        // generated.ext -- a random sized generated content byte-stream
+
         // pours slowly
-        serve( "/content/slow/all/*" ).with( NeverServlet.class );
+        serve( "/content/slow/all/*" ).with( ContentServlet.class );
         // pours as can, but defers "tail" (last few bytes)
-        serve( "/content/slow/tail/*" ).with( NeverServlet.class );
+        serve( "/content/slow/tail/*" ).with( ContentServlet.class );
 
-        serve( "/content/last-modified/none/*" ).with( NeverServlet.class );
-        serve( "/content/last-modified/zero/*" ).with( NeverServlet.class );
-        serve( "/content/last-modified/old/*" ).with( NeverServlet.class );
-        serve( "/content/last-modified/now/*" ).with( NeverServlet.class );
-        serve( "/content/last-modified/future/*" ).with( NeverServlet.class );
-        serve( "/content/last-modified/garbage/*" ).with( NeverServlet.class );
+        serve( "/content/last-modified/none/*" ).with( ContentServlet.class );
+        serve( "/content/last-modified/zero/*" ).with( ContentServlet.class );
+        serve( "/content/last-modified/old/*" ).with( ContentServlet.class );
+        serve( "/content/last-modified/now/*" ).with( ContentServlet.class );
+        serve( "/content/last-modified/future/*" ).with( ContentServlet.class );
+        serve( "/content/last-modified/garbage/*" ).with( ContentServlet.class );
 
-        serve( "/content/content-length/none/*" ).with( NeverServlet.class );
-        serve( "/content/content-length/zero/*" ).with( NeverServlet.class );
-        serve( "/content/content-length/less/*" ).with( NeverServlet.class );
-        serve( "/content/content-length/more/*" ).with( NeverServlet.class );
-        serve( "/content/content-length/garbage/*" ).with( NeverServlet.class );
+        serve( "/content/content-length/none/*" ).with( ContentServlet.class );
+        serve( "/content/content-length/zero/*" ).with( ContentServlet.class );
+        serve( "/content/content-length/less/*" ).with( ContentServlet.class );
+        serve( "/content/content-length/more/*" ).with( ContentServlet.class );
+        serve( "/content/content-length/garbage/*" ).with( ContentServlet.class );
 
-        serve( "/content/content-type/none/*" ).with( NeverServlet.class );
-        serve( "/content/content-type/wrong/*" ).with( NeverServlet.class );
-        serve( "/content/content-type/garbage/*" ).with( NeverServlet.class );
+        serve( "/content/content-type/none/*" ).with( ContentServlet.class );
+        serve( "/content/content-type/wrong/*" ).with( ContentServlet.class );
+        serve( "/content/content-type/garbage/*" ).with( ContentServlet.class );
 
         // TODO: take this from Maven packaged JAR
         // Add some extra info to response

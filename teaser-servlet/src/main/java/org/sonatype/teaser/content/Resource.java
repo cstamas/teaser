@@ -5,6 +5,8 @@ import java.io.OutputStream;
 
 public interface Resource
 {
+    String getName();
+    
     int getLength();
 
     String getMimeType();

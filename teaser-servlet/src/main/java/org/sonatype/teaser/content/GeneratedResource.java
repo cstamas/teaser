@@ -15,7 +15,9 @@ public class GeneratedResource
     public void write( OutputStream os )
         throws IOException
     {
-        // TODO Auto-generated method stub
-
+        for ( int i = 0; i < getLength(); i++ )
+        {
+            os.write( i );
+        }
     }
 }

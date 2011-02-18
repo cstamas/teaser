@@ -51,6 +51,20 @@ public class AbstractTeaserServlet
         }
     }
 
+    protected String getFilename( final HttpServletRequest req )
+    {
+        final String[] elements = getPathElements( getRemainingPath( req ) );
+
+        if ( elements.length == 0 )
+        {
+            return "";
+        }
+        else
+        {
+            return elements[elements.length - 1];
+        }
+    }
+
     protected int asInt( final String str, final int defaultValue )
     {
         try
