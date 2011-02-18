@@ -33,6 +33,11 @@ public class TeaserModule
 
         // content delivery
 
+        // content retrieved via /static/filename (served up by container as static file)
+        // and retrived via /content/filename (served up by the ContentServlet.class)
+        // are the reference for "good" server.
+        // Note: the /content requests does obey to X- headers, so this is true when NO X- header is passed!
+        // See ContentServlet for current X- headers.
         serve( "/content/*" ).with( ContentServlet.class );
 
         // "static" resources:
