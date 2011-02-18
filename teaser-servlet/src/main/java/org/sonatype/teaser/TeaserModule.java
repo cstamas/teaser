@@ -77,6 +77,6 @@ public class TeaserModule
 
         // TODO: take this from Maven packaged JAR
         // Add some extra info to response
-        filter( "/*" ).through( new VersioningFilter( "teaser-servlet", "1.0.0-SNAPSHOT" ) );
+        filter( "/*" ).through( VersioningFilter.class );
     }
 }
